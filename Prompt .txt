@@ -1,0 +1,103 @@
+1. What is the purpose of this program?
+Answer:
+This program implements a simple 2D Graphics Editor using C. It allows the user to add, display, modify, delete, and list different shapes like lines, rectangles, triangles, and circles on a text-based canvas.
+2. What is the use of #define HEIGHT 20 and #define WIDTH 40?
+Answer:
+They define the dimensions of the canvas. The canvas has 20 rows and 40 columns.
+3. Why is a 2D array used?
+Answer:
+The canvas is represented using a 2-dimensional character array:
+char canvas[HEIGHT][WIDTH];
+Each element stores a character ('*' or '_') representing a pixel.
+4. What is a structure in C?
+Answer:
+A structure is a user-defined data type used to group variables of different data types under one name.
+Example:
+
+typedef struct
+{
+    int id;
+    int type;
+    int row;
+    int col;
+    int p1;
+    int p2;
+    int active;
+} Shape;
+5. Why is typedef used?
+Answer:
+typedef creates an alias for a data type. Instead of writing:
+
+struct Shape s;
+we can simply write:
+
+Shape s;
+6. What is the purpose of the active variable?
+Answer:
+It indicates whether a shape exists on the canvas.
+1 → Shape is active.
+0 → Shape is deleted.
+7. Why are IDs assigned to shapes?
+Answer:
+Each shape gets a unique ID so that it can be modified or deleted easily.
+8. What is the role of initializeCanvas()?
+Answer:
+It fills the entire canvas with '_' characters, representing an empty drawing area.
+9. What does redrawCanvas() do?
+Answer:
+It clears the canvas and redraws all active shapes from the shapes array.
+10. Why is redrawCanvas() called after deletion or modification?
+Answer:
+Because the canvas must reflect the latest changes made to the shapes.
+11. Which data structure is used to store shapes?
+Answer:
+
+Shape shapes[MAX_SHAPES];
+It uses an array of structures.
+12. What is the maximum number of shapes that can be stored?
+Answer:
+
+#define MAX_SHAPES 100
+So, a maximum of 100 shapes can be stored.
+13. What is the time complexity of searching a shape by ID?
+Answer:
+Since the program uses linear search:
+
+for(i = 0; i < shapeCount; i++)
+the time complexity is:
+O(n)
+14. How is a line drawn in this program?
+Answer:
+By fixing the row and marking '*' from startCol to endCol.
+15. How is a rectangle drawn?
+Answer:
+By drawing:
+Top boundary,
+Bottom boundary,
+Left boundary,
+Right boundary.
+16. How is a triangle drawn?
+Answer:
+Using nested loops, where each row contains one more '*' than the previous row.
+17. How is the circle drawn?
+Answer:
+Using the equation:
+
+dx * dx + dy * dy <= radius * radius
+If the condition is true, the point lies inside the circle.
+18. What is the purpose of switch statements in this program?
+Answer:
+They help perform different operations based on:
+Shape type,
+User menu choice.
+19. What happens when option 6 (Clear Canvas) is selected?
+Answer:
+
+shapeCount = 0;
+initializeCanvas();
+All stored shapes are removed, and the canvas becomes empty.
+20. What is the return type of main()?
+Answer:
+
+int main()
+It returns an integer value to the operating system.
